@@ -62,7 +62,7 @@ def get_text_messages(message):
         key1 = types.InlineKeyboardMarkup()
         btn1 = types.InlineKeyboardButton(text="Напишите автору", url="https://t.me/BIaDISlav")
         key1.add(btn1)
-        img = open('AVA.png', 'rb')
+        img = open('AVA.jpg', 'rb')
         bot.send_photo(message.chat.id, img, reply_markup=key1)
 
     else:  # ...........................................................................................................
