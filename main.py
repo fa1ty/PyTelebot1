@@ -3,7 +3,7 @@
 import telebot  # pyTelegramBotAPI	4.3.1
 from telebot import types
 
-bot = telebot.TeleBot('5207758409:AAGJ5MVwNBkinpzp6PDCyOVNCxODByUsO-4')  # Создаем экземпляр бота
+bot = telebot.TeleBot('5213726431:AAFX7srIyKfHeQZwMF27SRACnOCM8cuDnK0')  # Создаем экземпляр бота
 
 # -----------------------------------------------------------------------
 # Функция, обрабатывающая команду /start
