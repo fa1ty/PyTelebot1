@@ -1,7 +1,12 @@
 # Телеграм-бот v.002 - бот создаёт меню, присылает собачку, и анекдот
 
+
 import telebot  # pyTelegramBotAPI	4.3.1
 from telebot import types
+import requests
+import bs4   #beautifulsoup4
+
+
 
 bot = telebot.TeleBot('5213726431:AAFX7srIyKfHeQZwMF27SRACnOCM8cuDnK0')  # Создаем экземпляр бота
 
@@ -46,10 +51,10 @@ def get_text_messages(message):
         bot.send_message(chat_id, text="Развлечения", reply_markup=markup)
 
     elif ms_text == "/dog" or ms_text == "Прислать собаку":  # .........................................................
-        bot.send_message(chat_id, text="еще не готово...")
+        bot.send_photo(chat_id, photo=get_dogURL(), caption="Вот тебе собачка!")
 
     elif ms_text == "Прислать анекдот":  # .............................................................................
-        bot.send_message(chat_id, text="еще не готово...")
+        bot.send_message(chat_id, text=get_anekdot())
 
     elif ms_text == "WEB-камера":
         bot.send_message(chat_id, text="еще не готово...")
@@ -68,7 +73,33 @@ def get_text_messages(message):
     else:  # ...........................................................................................................
         bot.send_message(chat_id, text="Я тебя слышу!!! Ваше сообщение: " + ms_text)
 
+
+
 # -----------------------------------------------------------------------
+def get_anekdot():
+    array_anekdots = []
+    req_anek = requests.get('http://anekdotme.ru/random')
+    if req_anek.status_code == 200:
+        soup = bs4.BeautifulSoup(req_anek.text, "html.parser")
+        result_find = soup.select('.anekdot_text')
+        for result in result_find:
+            array_anekdots.append(result.getText().strip())
+    if len(array_anekdots) > 0:
+        return array_anekdots[0]
+    else:
+        return ""
+# -----------------------------------------------------------------------
+def get_dogURL():
+    url = ""
+    req = requests.get('https://random.dog/woof.json')
+    if req.status_code == 200:
+        r_json = req.json()
+        url = r_json['url']
+        # url.split("/")[-1]
+    return url
+# -----------------------------------------------------------------------
+
+
 bot.polling(none_stop=True, interval=0) # Запускаем бота
 
 print()
