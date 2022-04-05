@@ -8,7 +8,7 @@ import bs4   #beautifulsoup4
 
 
 
-bot = telebot.TeleBot('5213726431:AAFX7srIyKfHeQZwMF27SRACnOCM8cuDnK0')  # Создаем экземпляр бота
+bot = telebot.TeleBot('5151693175:AAGacM5Sv9XLJDrlgpaFoKDLBff5UUq6KMs')  # Создаем экземпляр бота
 
 # -----------------------------------------------------------------------
 # Функция, обрабатывающая команду /start
@@ -65,7 +65,7 @@ def get_text_messages(message):
     elif ms_text == "Помощь" or ms_text == "/help":  # .................................................................
         bot.send_message(chat_id, "Автор: Я")
         key1 = types.InlineKeyboardMarkup()
-        btn1 = types.InlineKeyboardButton(text="Напишите автору", url="https://t.me/ChiKatia")
+        btn1 = types.InlineKeyboardButton(text="Напишите автору", url="https://t.me/tvoi_jager")
         key1.add(btn1)
         img = open('AVA.jpg', 'rb')
         bot.send_photo(message.chat.id, img, reply_markup=key1)
