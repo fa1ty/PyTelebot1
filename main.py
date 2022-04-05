@@ -63,7 +63,7 @@ def get_text_messages(message):
         bot.send_message(chat_id, text="еще не готово...")
 
     elif ms_text == "Помощь" or ms_text == "/help":  # .................................................................
-        bot.send_message(chat_id, "Автор: Я")
+        bot.send_message(chat_id, "Автор: Max")
         key1 = types.InlineKeyboardMarkup()
         btn1 = types.InlineKeyboardButton(text="Напишите автору", url="https://t.me/tvoi_jager")
         key1.add(btn1)
